@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
+using System;
 
 namespace ejercicio15.Models
 {
@@ -21,6 +22,9 @@ namespace ejercicio15.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        [ThreadStatic]
+        public static ApplicationDbContext applicationDbContext;
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

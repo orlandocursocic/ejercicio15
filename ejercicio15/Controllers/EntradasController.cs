@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using ejercicio15;
 using ejercicio15.Models;
+using ejercicio15.Servicios;
+using ejercicio15.Repository;
 
 namespace ejercicio15.Controllers
 {
@@ -80,8 +82,11 @@ namespace ejercicio15.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Entradas.Add(entrada);
-            db.SaveChanges();
+            // Aberracion, separar con inyeccion de dependencias con Unity
+            IEntradasRepository entradasRepository = new EntradasRepository();
+            IEntradasService entradasService = new EntradasService(entradasRepository);
+
+            entrada = entradasService.Create(entrada);
 
             return CreatedAtRoute("DefaultApi", new { id = entrada.id }, entrada);
         }
