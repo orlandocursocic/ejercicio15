@@ -19,6 +19,12 @@ namespace ejercicio15.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        private IEntradasService entradasService;
+
+        public EntradasController(IEntradasService entradasService) {
+            this.entradasService = entradasService;
+        }
+
         // GET: api/Entradas
         public IQueryable<Entrada> GetEntradas()
         {
@@ -81,11 +87,7 @@ namespace ejercicio15.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            // Aberracion, separar con inyeccion de dependencias con Unity
-            IEntradasRepository entradasRepository = new EntradasRepository();
-            IEntradasService entradasService = new EntradasService(entradasRepository);
-
+     
             entrada = entradasService.Create(entrada);
 
             return CreatedAtRoute("DefaultApi", new { id = entrada.id }, entrada);

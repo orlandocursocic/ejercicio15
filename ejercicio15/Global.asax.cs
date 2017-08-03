@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ejercicio15.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace ejercicio15
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            UnityConfig.RegisterComponents();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
