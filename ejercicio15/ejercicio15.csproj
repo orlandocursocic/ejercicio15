@@ -272,6 +272,7 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Servicios\EntradasService.cs" />
     <Compile Include="Servicios\IEntradasService.cs" />
+    <Compile Include="Servicios\NoEncontradoException.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
