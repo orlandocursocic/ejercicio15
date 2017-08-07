@@ -8,8 +8,6 @@ namespace ejercicio15.Controllers
 {
     public class EntradasController : ApiController
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
-
         private IEntradasService entradasService;
 
         public EntradasController(IEntradasService entradasService) {
